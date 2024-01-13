@@ -8,6 +8,7 @@ const Others:FC = () => {
   const [others, setOthers] = useState({
     fullName: '',
     phone: '',
+    address: '',
     amount: '',
     date: '',
     typeOfTax: ''
@@ -29,7 +30,7 @@ const Others:FC = () => {
         onChange={handleChange}
         onSubmit={handleSubmit}
       />
-    <Table/>
+    {/* <Table/> */}
   </section>
   )
 }

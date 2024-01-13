@@ -14,7 +14,6 @@ function App() {
   
 
   const { user } = useContext(AuthContext)
-  console.log(user)
 
   const Layout = () => {
     return(

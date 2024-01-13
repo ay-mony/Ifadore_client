@@ -1,17 +1,18 @@
-import { FC, useState , useContext} from 'react'
+import { FC, useState , useContext, useEffect} from 'react'
 import './styles.scss'
 import Table from '../../comps/table/Table'
 import AddRevenue from '../../comps/add/Add'
-import { createPollTax } from '../../services/context/polltaxContext/apiCall'
+import { createPollTax, getPollTax } from '../../services/context/polltaxContext/apiCall'
 import { PolltaxContext } from '../../services/context/polltaxContext/polltaxContext'
 
 const Polltask:FC = () => {
 
-  const { dispatch } = useContext(PolltaxContext)
+  const { polltax, dispatch } = useContext(PolltaxContext)
 
     const [polltaxDetails, setPolltaxDetails] = useState({
       fullName: '',
       phone: '',
+      address: '',
       amount: '',
       date: '',
       typeOfTax: ''
@@ -26,8 +27,11 @@ const Polltask:FC = () => {
       createPollTax(polltaxDetails, dispatch)
     }
 
-  
-    
+    useEffect(() => {
+      getPollTax(dispatch)
+    }, [dispatch])
+
+
   return (
     <section className='styles'>
       <AddRevenue
@@ -36,7 +40,7 @@ const Polltask:FC = () => {
         onChange={handleChange}
         onSubmit={handleSubmit}
       />
-      <Table/>
+      <Table rows={polltax}/>
     </section>
   )
 }

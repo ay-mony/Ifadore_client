@@ -1,24 +1,30 @@
 import Table from '../../comps/table/Table'
-import { FC, useState } from 'react'
+import { FC, useContext, useState } from 'react'
 import './styles.scss'
 import AddRevenue from '../../comps/add/Add'
+import { RentTaxContext } from '../../services/context/rentContext/rentContext'
+import { createRentTax } from '../../services/context/rentContext/apiCall'
 
 const Rent:FC = () => {
 
-  const [rent, setRent] = useState({
+  const { dispatch, rent } = useContext(RentTaxContext)
+
+  const [rentValues, setRentValues] = useState({
     fullName: '',
     phone: '',
     amount: '',
+    address: '',
     date: '',
     typeOfTax: ''
   })
 
   const handleChange = (e:any) => {
-    setRent({...rent, [e.target.name]: e.target.value})
+    setRentValues({...rentValues, [e.target.name]: e.target.value})
   }
 
   const handleSubmit = (e:any) => {
-
+    e.preventDefault()
+    createRentTax(rentValues, dispatch)
   }
 
   return (
@@ -29,7 +35,7 @@ const Rent:FC = () => {
           onChange={handleChange}
           onSubmit={handleSubmit}
       />
-      <Table/>
+      <Table rows={rent}/>
     </section>
   )
 }

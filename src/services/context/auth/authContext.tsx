@@ -10,7 +10,6 @@ const userString = localStorage.getItem('user')
 
 const INITIAL_STATE: authContextProps = {
     user: userString ? JSON.parse(userString) : null,
-    // user: null,
     loading: false,
     error: false,
     dispatch: () => {}

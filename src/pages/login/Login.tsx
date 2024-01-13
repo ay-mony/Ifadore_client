@@ -5,7 +5,7 @@ import { AuthContext } from '../../services/context/auth/authContext'
 
 const Login = () => {
 
-  const { dispatch, error } = useContext(AuthContext)
+  const { dispatch, error, loading} = useContext(AuthContext)
 
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
@@ -15,9 +15,6 @@ const Login = () => {
     e.preventDefault()
     loginUser({email, password}, dispatch)
   }
-
-  console.log(email, password)
-  console.log(error)
 
   return (
     <div className='login'>
@@ -40,7 +37,7 @@ const Login = () => {
           onChange={(e)=>setPassword(e.target.value)} 
           required min={8} 
         />
-        <button type='submit'>Login</button>
+        <button type='submit' disabled={loading}>Login</button>
         {error && <span className='err'>Please Enter a valid username and password</span>}
       </form>
     </div>

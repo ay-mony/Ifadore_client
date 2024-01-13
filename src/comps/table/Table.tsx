@@ -1,10 +1,15 @@
 import './table.scss';
 import Box from '@mui/material/Box';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
-import { rows } from '../../data';
+import { FC } from 'react';
+
+
+interface TableProp {
+  rows: any[]
+}
 
 const columns: GridColDef[] = [
-  { field: 'id', headerName: 'ID', width: 50 },
+  { field: '_id', headerName: 'ID', width: 50 },
   {
     field: 'fullName',
     headerName: 'FullName',
@@ -37,7 +42,7 @@ const columns: GridColDef[] = [
     editable: true,
   },
   {
-    field: 'type',
+    field: 'typeOfTax',
     headerName: 'Type',
     width: 140,
     editable: true,
@@ -45,11 +50,12 @@ const columns: GridColDef[] = [
 ];
 
 
-export default function DataGridDemo() {
+const DataTable:FC<TableProp> = ({rows}) =>{
   return (
     <Box sx={{ height: 400, width: '100%' }}>
       <DataGrid
         rows={rows}
+        getRowId={(r)=> r._id}
         columns={columns}
         initialState={{
           pagination: {
@@ -65,3 +71,5 @@ export default function DataGridDemo() {
     </Box>
   );
 }
+
+export default DataTable

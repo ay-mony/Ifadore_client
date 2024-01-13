@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom'
 import { SidebarItems } from '../../types/types';
 import { AuthContext } from '../../services/context/auth/authContext';
 import { logoutUser } from '../../services/context/auth/apiCall';
-import { logout } from '../../services/context/auth/authActions';
 
 const lists: SidebarItems[] = [
     {
@@ -65,7 +64,6 @@ const Sidebar: FC = () => {
 
     const Logout = () => {
         logoutUser(dispatch)
-        console.log('logout!!!')
     }
 
   return (

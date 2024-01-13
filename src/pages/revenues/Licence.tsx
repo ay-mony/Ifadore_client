@@ -1,11 +1,15 @@
 import Table from '../../comps/table/Table'
-import { FC, useState } from 'react'
+import { FC, useContext, useState } from 'react'
 import './styles.scss'
 import AddRevenue from '../../comps/add/Add'
+import { createLicenceTax } from '../../services/context/licenceContext/apiCall'
+import { LicenceTaxContext } from '../../services/context/licenceContext/licenceContext'
 
 const Licence:FC = () => {
 
-    const [licence, setLicence] = useState({
+  const { dispatch , licence} = useContext(LicenceTaxContext)
+ 
+    const [licenceDetails, setLicenceDetails] = useState({
       fullName: '',
       phone: '',
       amount: '',
@@ -14,11 +18,12 @@ const Licence:FC = () => {
     })
 
     const handleChange = (e:any) => {
-      setLicence({...licence, [e.target.name]: e.target.value})
+      setLicenceDetails({...licenceDetails, [e.target.name]: e.target.value})
     }
 
     const handleSubmit = (e:any) => {
       e.preventDefault()
+      createLicenceTax(licenceDetails, dispatch)
     }
 
   return (
@@ -29,7 +34,7 @@ const Licence:FC = () => {
         onChange={handleChange}
         onSubmit={handleSubmit}
       />
-      <Table/>
+      <Table rows={licence}/>
     </section>
   )
 }

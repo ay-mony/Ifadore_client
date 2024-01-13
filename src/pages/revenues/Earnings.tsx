@@ -7,11 +7,12 @@ import { createEarningTax } from '../../services/context/earningContext/apiCall'
 
 const Earnings:FC = () => {
 
-  const { dispatch } = useContext(EarningTaxContext)
+  const { dispatch, earning } = useContext(EarningTaxContext)
 
   const [earnings, setEarnings] = useState({
     fullName: '',
     phone: '',
+    address: '',
     amount: '',
     date: '',
     typeOfTax: ''
@@ -24,7 +25,7 @@ const Earnings:FC = () => {
   const handleSubmit = (e:any) => {
       e.preventDefault()
       createEarningTax(earnings, dispatch)
-      console.log(earnings)
+      window.location.reload()
   }
 
   return (
@@ -35,7 +36,7 @@ const Earnings:FC = () => {
         onChange={handleChange}
         onSubmit={handleSubmit}
       />
-    <Table/>
+    <Table rows={earning}/>
     </section>
   )
 }

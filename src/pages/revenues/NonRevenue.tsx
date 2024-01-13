@@ -8,6 +8,7 @@ const NonRevenue:FC = () => {
   const [nonrevenue, setNonRevenue] = useState({
     fullName: '',
     phone: '',
+    address: '',
     amount: '',
     date: '',
     typeOfTax: ''
@@ -30,7 +31,7 @@ const NonRevenue:FC = () => {
         onChange={handleChange}
         onSubmit={handleSubmit}
      />
-     <Table/>
+     {/* <Table /> */}
      </section>
   )
 }

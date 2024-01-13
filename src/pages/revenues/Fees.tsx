@@ -9,23 +9,24 @@ import { FeesContext } from '../../services/context/feeContext/feesContext'
 
 const Fees:FC = () => {
 
-  const { dispatch } = useContext(FeesContext)
+  const { dispatch, fees } = useContext(FeesContext)
 
-  const [fees, setFees] = useState({
+  const [feesDetails, setFeesDetails] = useState({
     fullName: '',
     phone: '',
+    address: '',
     amount: '',
     date: '',
     typeOfTax: ''
   })
 
   const handleChange = (e:any) => {
-    setFees({...fees, [e.target.name]: e.target.value})
+    setFeesDetails({...feesDetails, [e.target.name]: e.target.value})
   }
 
   const handleSubmit = (e:any) => {
     e.preventDefault()
-    createFeesTax(fees, dispatch)
+    createFeesTax(feesDetails, dispatch)
   }
 
   return (
@@ -36,7 +37,7 @@ const Fees:FC = () => {
         onChange={handleChange}
         onSubmit={handleSubmit}
       />
-    <Table/>
+    <Table rows={fees}/>
     </section>
   )
 }
