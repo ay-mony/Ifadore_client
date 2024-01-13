@@ -32,3 +32,13 @@ export interface modalInputProps {
     maxLenght?: number
 }
 
+export interface WidgetDetails {
+    title: string;
+    icon: React.ReactElement;
+    amount: number;
+  }
+  
+  export interface WidgetProps {
+    type: 'polltax' | 'earnings' | 'rent' | 'month' | 'total';
+  }
+  

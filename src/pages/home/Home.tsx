@@ -9,8 +9,8 @@ const Home:FC = ()=> {
       <section className='home__cont'>
         <section>
         <Widget type='polltax'/>
-        <Widget type='licence'/>
-        <Widget type='yesterday'/>
+        <Widget type='rent'/>
+        <Widget type='earnings'/>
         <Widget type='month'/>
         <Widget type='total'/>
         </section>

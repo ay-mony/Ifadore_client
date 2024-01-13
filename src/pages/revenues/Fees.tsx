@@ -1,8 +1,8 @@
 import Table from '../../comps/table/Table'
-import { FC, useContext, useState } from 'react'
+import { FC, useContext, useEffect, useState } from 'react'
 import './styles.scss'
 import AddRevenue from '../../comps/add/Add'
-import { createFeesTax } from '../../services/context/feeContext/apiCall'
+import { createFeesTax, getFeesTax } from '../../services/context/feeContext/apiCall'
 import { FeesContext } from '../../services/context/feeContext/feesContext'
 
 
@@ -27,7 +27,16 @@ const Fees:FC = () => {
   const handleSubmit = (e:any) => {
     e.preventDefault()
     createFeesTax(feesDetails, dispatch)
+    window.location.reload()
   }
+
+  useEffect(() => {
+    getFeesTax(dispatch)
+
+    return () => {
+
+    }
+  }, [dispatch])
 
   return (
     <section className='styles'>

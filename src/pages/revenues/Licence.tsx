@@ -1,8 +1,8 @@
 import Table from '../../comps/table/Table'
-import { FC, useContext, useState } from 'react'
+import { FC, useContext, useEffect, useState } from 'react'
 import './styles.scss'
 import AddRevenue from '../../comps/add/Add'
-import { createLicenceTax } from '../../services/context/licenceContext/apiCall'
+import { createLicenceTax, getLicenceTax } from '../../services/context/licenceContext/apiCall'
 import { LicenceTaxContext } from '../../services/context/licenceContext/licenceContext'
 
 const Licence:FC = () => {
@@ -24,7 +24,16 @@ const Licence:FC = () => {
     const handleSubmit = (e:any) => {
       e.preventDefault()
       createLicenceTax(licenceDetails, dispatch)
+      window.location.reload()
     }
+
+    useEffect(() => {
+      getLicenceTax(dispatch)
+
+      return () => {
+
+      }
+    }, [dispatch])
 
   return (
     <section className='styles'>
