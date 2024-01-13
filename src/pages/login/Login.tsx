@@ -1,30 +1,23 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import './login.scss'
-import axios from 'axios'
+import { loginUser } from '../../services/context/auth/apiCall'
+import { AuthContext } from '../../services/context/auth/authContext'
 
 const Login = () => {
 
+  const { dispatch, error } = useContext(AuthContext)
+
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
-  const [error, setError] = useState<boolean>(false)
 
 
-  const handleLogin = async (e:any) => {
+  const handleLogin = (e:any) => {
     e.preventDefault()
-
-    try {
-      const res = await axios.post('http://localhost:8800/api/auth/login', {
-        email,
-        password
-      })
-      localStorage.setItem('user', JSON.stringify(res.data))
-      window.location.replace('/')
-      
-    } catch (error) {
-        setError(true)
-    }
+    loginUser({email, password}, dispatch)
   }
 
+  console.log(email, password)
+  console.log(error)
 
   return (
     <div className='login'>

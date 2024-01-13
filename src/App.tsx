@@ -5,13 +5,16 @@ import Sidebar from './comps/sidebar/Sidebar';
 import Home from './pages/home/Home';
 import Login from './pages/login/Login';
 import { Polltask, Earnings,  Lincence, Fees, NonRevenue, Rent, Others } from './pages/revenues';
+import { useContext } from 'react';
+import { AuthContext } from './services/context/auth/authContext';
 
 
 
 function App() {
   
-  const userString = localStorage.getItem('user');
-  const user = userString ? JSON.parse(userString) : null;
+
+  const { user } = useContext(AuthContext)
+  console.log(user)
 
   const Layout = () => {
     return(

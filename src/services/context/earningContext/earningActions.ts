@@ -2,21 +2,25 @@ export const getEarningStart = () => ({
     type: 'GET_EARNING_START'
 })
 
-export const getEarningSuccess = () => ({
-    type: 'GET_EARNING_SUCCESS'
+export const getEarningSuccess = (earning:any) => ({
+    type: 'GET_EARNING_SUCCESS',
+    payload: earning
 })
 
-export const getPollTaxFail = () => ({
-    type: 'GET_EARNING_FAIL'
+export const getEarningFail = (error: any) => ({
+    type: 'GET_EARNING_FAIL',
+    payload: error
 })
 
 //create
 export const createEarningStart = () => ({
     type: 'CREATE_EARNING_START'
 })
-export const createEarningSuccess = () => ({
-    type: 'CREATE_EARNING_SUCESS'
+export const createEarningSuccess = (earning:any) => ({
+    type: 'CREATE_EARNING_SUCESS',
+    payload: earning
 })
-export const createEarningFail = () => ({
-    type: 'CREATE_EARNING_FAIL'
+export const createEarningFail = (error: any) => ({
+    type: 'CREATE_EARNING_FAIL',
+    payload: error
 })

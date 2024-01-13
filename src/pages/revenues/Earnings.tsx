@@ -1,9 +1,13 @@
 import Table from '../../comps/table/Table'
-import { FC, useState } from 'react'
+import { FC, useContext, useState } from 'react'
 import './styles.scss'
 import AddRevenue from '../../comps/add/Add'
+import { EarningTaxContext } from '../../services/context/earningContext/earningContext'
+import { createEarningTax } from '../../services/context/earningContext/apiCall'
 
 const Earnings:FC = () => {
+
+  const { dispatch } = useContext(EarningTaxContext)
 
   const [earnings, setEarnings] = useState({
     fullName: '',
@@ -19,9 +23,9 @@ const Earnings:FC = () => {
 
   const handleSubmit = (e:any) => {
       e.preventDefault()
+      createEarningTax(earnings, dispatch)
+      console.log(earnings)
   }
-
-  console.log(earnings)
 
   return (
     <section className='styles'>

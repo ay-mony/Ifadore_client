@@ -24,7 +24,6 @@ const Polltask:FC = () => {
     const handleSubmit = (e:any) => {
       e.preventDefault()
       createPollTax(polltaxDetails, dispatch)
-      console.log(polltaxDetails)
     }
 
   

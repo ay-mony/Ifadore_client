@@ -7,7 +7,7 @@ interface eProviderProps {
 }
 
 
-const INITIAL_STATE = {
+const INITIAL_STATE:earningContextProps = {
     earning: [],
     loading: false,
     error: false,

@@ -1,9 +1,15 @@
 import Table from '../../comps/table/Table'
-import { FC, useState } from 'react'
+import { FC, useContext, useState } from 'react'
 import './styles.scss'
 import AddRevenue from '../../comps/add/Add'
+import { createFeesTax } from '../../services/context/feeContext/apiCall'
+import { FeesContext } from '../../services/context/feeContext/feesContext'
+
+
 
 const Fees:FC = () => {
+
+  const { dispatch } = useContext(FeesContext)
 
   const [fees, setFees] = useState({
     fullName: '',
@@ -19,7 +25,9 @@ const Fees:FC = () => {
 
   const handleSubmit = (e:any) => {
     e.preventDefault()
+    createFeesTax(fees, dispatch)
   }
+
   return (
     <section className='styles'>
       <AddRevenue

@@ -21,7 +21,7 @@ const EarningTaxReducer = (state: earningStateType, action: earningActionType) =
                 error: true,
             }
 
-
+        //create
         case 'CREATE_EARNING_START':
             return{
                 ...state,

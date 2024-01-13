@@ -1,11 +1,13 @@
 import axios from "axios"
 import { createPollTaxStart, createPollTaxFail, createPollTaxSuccess, getPollTaxStart, getPollTaxSuccess, getPollTaxFail } from "./polltaxActions"
 
+const url = 'http://localhost:8800/api/polltax'
+
 export const createPollTax = async (polltax:any, dispatch: any) => {
     dispatch(createPollTaxStart())
 
     try {
-        const res = await axios.post('http://localhost:8800/api/polltax', polltax)
+        const res = await axios.post(url, polltax)
         dispatch(createPollTaxSuccess(res.data))
     } catch (error) {
         dispatch(createPollTaxFail(error))
@@ -17,10 +19,9 @@ export const createPollTax = async (polltax:any, dispatch: any) => {
 export const getPollTax = async (dispatch:any) => {
     dispatch(getPollTaxStart())
     try {
-        const res = await axios.get('http://localhost:8800/api/polltax')
+        const res = await axios.get(url)
 
         dispatch(getPollTaxSuccess(res.data))
-        console.log(res.data)
     } catch (error) {
         dispatch(getPollTaxFail(error))
     }
