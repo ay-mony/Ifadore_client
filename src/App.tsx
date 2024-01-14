@@ -12,8 +12,13 @@ import { AuthContext } from './services/context/auth/authContext';
 
 function App() {
   
+<<<<<<< HEAD
 
   const { user } = useContext(AuthContext)
+=======
+  const userString = localStorage.getItem('user');
+  const user = userString ? JSON.parse(userString) : null;
+>>>>>>> 07d8d54c1f022957c579c0ebb3a016020a3827d9
 
   const Layout = () => {
     return(

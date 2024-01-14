@@ -1,0 +1,30 @@
+.app{
+    max-width: 1200px;
+    margin: 0 auto;
+    height:  calc(100vh - 70px);
+    display: flex;
+    flex-direction: column;
+}
+
+.app_cont{
+    display: flex;
+    background-color: #fff;
+}
+
+.app__sidebar{
+    flex: 1;
+}
+
+.app__cont_main{
+    flex: 4;
+}
+
+@media screen and (max-width: 760px){
+    .app__sidebar{
+        display: none;
+    }
+
+    .app__cont_main{
+        width: 100%;
+    }
+}

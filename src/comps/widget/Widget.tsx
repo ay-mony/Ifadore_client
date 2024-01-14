@@ -2,8 +2,8 @@ import './widget.scss'
 import { FC, useEffect, useState } from 'react'
 import { WidgetProps, WidgetDetails } from '../../types/types'
 import { ChatBubble, ApprovalOutlined, BarChartOutlined, CheckCircleOutline, Repartition } from '@mui/icons-material'
-import { UseAmonut } from '../../services/utils/UseAmount'
 import { polltaxUrl } from '../../services/utils/url'
+import { baseUrl } from '../../services/utils/url'
 import axios from 'axios'
 
 
@@ -17,6 +17,22 @@ const Widget: FC<WidgetProps> = ({type})=> {
       try {
         const res = await axios.get(polltaxUrl)
         setPollTax(res.data.totalAmount)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    getPollTax()
+  })
+
+
+  const [earningtaxAmount, setEarningtaxAmount] = useState(0)
+  useEffect(() => {
+    const getPollTax = async () => {
+
+      try {
+        const res = await axios.get(baseUrl + 'earning/amount')
+        setEarningtaxAmount(res.data.totalAmount)
+        console.log(res)
       } catch (error) {
         console.log(error)
       }
@@ -39,13 +55,13 @@ const Widget: FC<WidgetProps> = ({type})=> {
         return {
           title: 'Rents',
           icon: <ApprovalOutlined style={{color: 'green'}}/>,
-          amount: 312000
+          amount: 2
       };
       case 'earnings':
         return {
           title: 'Earnings',
           icon: <CheckCircleOutline style={{color: 'yellow'}}/>,
-          amount: 310000
+          amount: earningtaxAmount
         };
       case 'month':
         return {

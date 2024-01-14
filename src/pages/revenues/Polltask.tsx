@@ -25,15 +25,15 @@ const Polltask:FC = () => {
     const handleSubmit = (e:any) => {
       e.preventDefault()
       createPollTax(polltaxDetails, dispatch)
-      if(polltax){
-        window.location.reload()
-      } else {
-        throw new Error
-      }
+      window.location.reload()
     }
 
     useEffect(() => {
       getPollTax(dispatch)
+
+      return () => {
+        
+      }
     }, [dispatch])
 
 

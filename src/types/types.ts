@@ -32,6 +32,7 @@ export interface modalInputProps {
     maxLenght?: number
 }
 
+<<<<<<< HEAD
 export interface WidgetDetails {
     title: string;
     icon: React.ReactElement;
@@ -42,3 +43,5 @@ export interface WidgetDetails {
     type: 'polltax' | 'earnings' | 'rent' | 'month' | 'total';
   }
   
+=======
+>>>>>>> 07d8d54c1f022957c579c0ebb3a016020a3827d9

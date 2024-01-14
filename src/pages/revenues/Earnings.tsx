@@ -3,7 +3,8 @@ import { FC, useContext, useEffect, useState } from 'react'
 import './styles.scss'
 import AddRevenue from '../../comps/add/Add'
 import { EarningTaxContext } from '../../services/context/earningContext/earningContext'
-import { createEarningTax, getEarningTax } from '../../services/context/earningContext/apiCall'
+import { createEarningTax,  getEarningTax } from '../../services/context/earningContext/apiCall'
+
 
 const Earnings:FC = () => {
 

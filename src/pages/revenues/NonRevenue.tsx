@@ -1,9 +1,13 @@
 import Table from '../../comps/table/Table'
 import AddRevenue from '../../comps/add/Add'
-import { FC, useState } from 'react'
+import { FC, useState, useContext } from 'react'
+import { PolltaxContext } from '../../services/context/polltaxContext/polltaxContext'
 import './styles.scss'
+import { createNonRevenue } from '../../services/context/polltaxContext/apiCall'
 
 const NonRevenue:FC = () => {
+
+  const { dispatch, polltax } = useContext(PolltaxContext)
 
   const [nonrevenue, setNonRevenue] = useState({
     fullName: '',
@@ -19,7 +23,9 @@ const NonRevenue:FC = () => {
   }
 
   const handleSubmit = (e:any) => {
-
+    e.preventDefault()
+    createNonRevenue(nonrevenue, dispatch)
+    window.location.replace('/nonrevenue')
   }
 
 
@@ -31,7 +37,7 @@ const NonRevenue:FC = () => {
         onChange={handleChange}
         onSubmit={handleSubmit}
      />
-     {/* <Table /> */}
+     <Table rows={polltax}/>
      </section>
   )
 }

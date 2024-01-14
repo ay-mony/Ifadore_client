@@ -8,6 +8,7 @@ import { FeesContextProvider } from './services/context/feeContext/feesContext';
 import { AuthContextProvider } from './services/context/auth/authContext';
 import { LicenceTaxContextProvider } from './services/context/licenceContext/licenceContext';
 import { RentTaxContextProvider } from './services/context/rentContext/rentContext';
+import { OthersTaxContextProvider } from './services/context/othersContext/earningContext';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -20,7 +21,9 @@ root.render(
     <FeesContextProvider>
     <LicenceTaxContextProvider>
     <RentTaxContextProvider>
+    <OthersTaxContextProvider>
       <App />
+    </OthersTaxContextProvider>
     </RentTaxContextProvider>
     </LicenceTaxContextProvider>
     </FeesContextProvider>

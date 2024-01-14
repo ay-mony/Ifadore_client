@@ -1,11 +1,15 @@
 import Table from '../../comps/table/Table'
-import { FC, useState } from 'react'
+import { FC, useState, useContext, useEffect } from 'react'
 import './styles.scss'
 import AddRevenue from '../../comps/add/Add'
+import { EarningTaxContext } from '../../services/context/othersContext/earningContext'
+import { createOthersTax, getOthersTax } from '../../services/context/othersContext/apiCall'
 
 const Others:FC = () => {
 
-  const [others, setOthers] = useState({
+  const { dispatch, earning } = useContext(EarningTaxContext)
+
+  const [othersDetails, setOthersDetails] = useState({
     fullName: '',
     phone: '',
     address: '',
@@ -15,12 +19,22 @@ const Others:FC = () => {
   })
 
   const handleChange = (e:any) => {
-    setOthers({...others, [e.target.name]: e.target.value})
+    setOthersDetails({...othersDetails, [e.target.name]: e.target.value})
   }
 
   const handleSubmit = (e:any) => {
-
+    e.preventDefault()
+    createOthersTax(earning, dispatch)
+    window.location.reload()
   }
+
+  useEffect(() => {
+    getOthersTax(dispatch)
+
+    return () => {
+
+    }
+  }, [dispatch])
 
   return (
     <section className='styles'>
@@ -30,7 +44,7 @@ const Others:FC = () => {
         onChange={handleChange}
         onSubmit={handleSubmit}
       />
-    {/* <Table/> */}
+    <Table rows={earning}/>
   </section>
   )
 }
