@@ -1,0 +1,26 @@
+.widget{
+    height: 100px;
+    width: 150px;
+    border-radius: 5px;
+    box-shadow:  2px 4px 10px 1px rgba(201, 201, 201, .47);
+    cursor: pointer;
+
+    div{
+        display: flex;
+        flex-direction: column;
+        font-weight: 600;
+        
+        .div{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 5px;
+            margin: 10px 5px;
+            align-items: center;
+            gap: 5px;
+        }
+        p{
+            text-align: center;
+        }
+    }
+}

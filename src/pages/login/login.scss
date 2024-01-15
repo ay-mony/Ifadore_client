@@ -1,0 +1,52 @@
+.login{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('../../../public/bg.jpeg') no-repeat;
+    background-size: cover;
+    
+    .login__cont{
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        img{
+            height: 60px;
+            width: 60px;
+            border-radius: 50%;
+            display: flex;
+            margin: 0 auto;
+        }
+
+        h2{
+            font-size: 28px;
+            text-align: center;
+            color: #222;
+        }
+
+        input{
+            padding: 10px 14px;
+            border-radius: 5px;
+            outline: none;
+            border: 1px solid gray;
+        }
+
+        button{
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            color: #fff;
+            background-color: #001D3D;
+            border-radius: 5px;
+        }
+
+        span{
+            color: crimson;
+            font-size: 14px;
+            font-weight: 700;
+        }
+    }
+}

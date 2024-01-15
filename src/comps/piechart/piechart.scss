@@ -1,0 +1,22 @@
+.pichart{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    float: right;
+}
+
+
+.infos{
+    display: flex;
+    flex-direction: row;
+
+    div{
+        height: 15px;
+        width: 15px;
+        background-color: green;
+    }
+
+    span{
+        font-weight: 600;
+    }
+}

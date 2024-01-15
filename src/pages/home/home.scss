@@ -1,0 +1,35 @@
+.home{
+    height: 100%;
+
+    .home__cont{
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+
+        section{
+            display: flex;
+            flex-direction: row;
+            flex-grow: 1;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            margin: 15px;
+            gap: 20px;
+        }
+
+        div{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 10px;
+        }
+    }
+}
+
+
+@media screen and (max-width: 760px) {
+
+    div{
+        flex-direction: column;
+    }
+}
