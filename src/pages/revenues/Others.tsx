@@ -2,12 +2,12 @@ import Table from '../../comps/table/Table'
 import { FC, useState, useContext, useEffect } from 'react'
 import './styles.scss'
 import AddRevenue from '../../comps/add/Add'
-// import { createOthersTax, getOthersTax } from '../../services/context/earningContext/apiCall'
-import { EarningTaxContext } from '../../services/context/othersContext/earningContext'
+import { createOthersTax, getOthersTax } from '../../services/context/othersContext/apiCall'
+import { OthersTaxContext } from '../../services/context/othersContext/othersContext'
 
 const Others:FC = () => {
 
-  const { dispatch, earning } = useContext(EarningTaxContext)
+  const { dispatch, others } = useContext(OthersTaxContext)
 
   const [othersDetails, setOthersDetails] = useState({
     fullName: '',
@@ -24,12 +24,12 @@ const Others:FC = () => {
 
   const handleSubmit = (e:any) => {
     e.preventDefault()
-    // createOthersTax(othersDetails, dispatch)
+    createOthersTax(othersDetails, dispatch)
     window.location.reload()
   }
 
   useEffect(() => {
-    // getOthersTax(dispatch)
+    getOthersTax(dispatch)
 
     return () => {
 
@@ -44,7 +44,7 @@ const Others:FC = () => {
         onChange={handleChange}
         onSubmit={handleSubmit}
       />
-    <Table rows={earning}/>
+    <Table rows={others}/>
   </section>
   )
 }

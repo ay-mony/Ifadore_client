@@ -1,20 +1,20 @@
 import { Dispatch } from "react";
 
-export interface earningStateType {
-    earning: any,
+export interface othersStateType {
+    others: any,
     loading: boolean,
     error: boolean,
-    dispatch?: Dispatch<earningActionType> 
+    dispatch?: Dispatch<othersActionType> 
 }
 
-export interface earningActionType {
-    type: 'GET_EARNING_START' | 'GET_EARNING_SUCCESS' | 'GET_EARNING_FAIL' | 'CREATE_EARNING_START' | 'CREATE_EARNING_SUCESS' | 'CREATE_EARNING_FAIL' | string 
+export interface othersActionType {
+    type: 'GET_OTHERS_START' | 'GET_OTHERS_SUCCESS' | 'GET_OTHERS_FAIL' | 'CREATE_OTHERS_START' | 'CREATE_OTHERS_SUCESS' | 'CREATE_OTHERS_FAIL' 
     payload: any
 }
 
-export interface earningContextProps {
-    earning: any, 
+export interface othersContextProps {
+    others: any, 
     loading: boolean;
     error: boolean;
-    dispatch?: Dispatch<earningActionType> 
+    dispatch?: Dispatch<othersActionType> 
   }

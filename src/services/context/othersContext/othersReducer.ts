@@ -1,40 +1,40 @@
-import { earningActionType, earningStateType } from "./types"
+import { othersActionType, othersStateType } from "./types"
 
-const EarningTaxReducer = (state: earningStateType, action: earningActionType) => {
+const OthersTaxReducer = (state: othersStateType, action: othersActionType) => {
     switch (action.type) {
-        case 'GET_EARNING_START':
+        case 'GET_OTHERS_START':
             return{
-                earning: [],
+                others: [],
                 loading: true,
                 error: false,
             }
-        case 'GET_EARNING_SUCCESS':
+        case 'GET_OTHERS_SUCCESS':
             return{
-                earning: action.payload,
+                others: action.payload,
                 loading: false,
                 error: false,
             }
-        case 'GET_EARNING_FAIL':
+        case 'GET_OTHERS_FAIL':
             return{
-                earning: [],
+                others: [],
                 loading: false,
                 error: true,
             }
 
         //create
-        case 'CREATE_EARNING_START':
+        case 'CREATE_OTHERS_START':
             return{
                 ...state,
                 loading: true,
                 error: false,
             }
-        case 'CREATE_EARNING_SUCESS':
+        case 'CREATE_OTHERS_SUCESS':
             return{
-                earning: [...state.earning, action.payload],
+                others: [...state.others, action.payload],
                 loading: false,
                 error: false,
             }
-        case 'CREATE_EARNING_FAIL':
+        case 'CREATE_OTHERS_FAIL':
             return{
                 ...state,
                 loading: false,
@@ -46,4 +46,4 @@ const EarningTaxReducer = (state: earningStateType, action: earningActionType) =
     }
 }
 
-export default EarningTaxReducer
+export default OthersTaxReducer

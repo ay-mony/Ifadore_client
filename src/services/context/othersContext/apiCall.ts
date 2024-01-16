@@ -1,26 +1,26 @@
 import axios from 'axios'
-import { createEarningFail, createEarningStart, createEarningSuccess, getEarningStart, getEarningSuccess, getEarningFail } from './earningActions'
+import { createOthersStart, createOthersSuccess, createOthersFail, getOthersStart, getOthersSuccess, getOthersFail } from './othersActions'
+import { baseUrl } from '../../utils/url'
 
-const url = 'http://localhost:8800/api/earning'
 
-export const createEarningTax = async (earning:any, dispatch: any) => {
-    dispatch(createEarningStart())
+export const createOthersTax = async (earning:any, dispatch: any) => {
+    dispatch(createOthersStart())
 
     try {
-        const res = await axios.post(url, earning)
-        dispatch(createEarningSuccess(res.data))
+        const res = await axios.post(baseUrl + 'others', earning)
+        dispatch(createOthersSuccess(res.data))
     } catch (error) {
-        dispatch(createEarningFail(error))
+        dispatch(createOthersFail(error))
     }
 }
 
-export const getEarningTax = async (dispatch: any) => {
-    dispatch(getEarningStart())
+export const getOthersTax = async (dispatch: any) => {
+    dispatch(getOthersStart())
 
     try {
-        const res = await axios.get(url)
-        dispatch(getEarningSuccess(res.data))
+        const res = await axios.get(baseUrl + 'others')
+        dispatch(getOthersSuccess(res.data))
     } catch (error) {
-        dispatch(getEarningFail(error))
+        dispatch(getOthersFail(error))
     }
 }
