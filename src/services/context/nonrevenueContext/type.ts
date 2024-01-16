@@ -6,9 +6,9 @@ export interface nonrevenueAcionType {
 }
 
 export interface nonrevenueStateType {
-    nonrevenue: any[],
+    nonrevenue: any,
     loading: boolean,
     error: boolean,
-    dispatch?: Dispatch<nonrevenueAcionType> ;
+    dispatch?: Dispatch<nonrevenueAcionType>
 }
 
