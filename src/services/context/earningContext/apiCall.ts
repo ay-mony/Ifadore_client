@@ -3,7 +3,7 @@ import { createEarningFail, createEarningStart, createEarningSuccess, getEarning
 import { baseUrl } from '../../utils/url'
 
 
-export const createOthersTax = async (earning:any, dispatch: any) => {
+export const createEarningTax = async (earning:any, dispatch: any) => {
     dispatch(createEarningStart())
 
     try {
@@ -14,7 +14,7 @@ export const createOthersTax = async (earning:any, dispatch: any) => {
     }
 }
 
-export const getOthersTax = async (dispatch: any) => {
+export const getEarningTax = async (dispatch: any) => {
     dispatch(getEarningStart())
 
     try {

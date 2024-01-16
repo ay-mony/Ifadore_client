@@ -3,7 +3,7 @@ import { FC, useContext, useEffect, useState } from 'react'
 import './styles.scss'
 import AddRevenue from '../../comps/add/Add'
 import { EarningTaxContext } from '../../services/context/earningContext/earningContext'
-// import { createEarningTax, getEarningTax } from '../../services/context/earningContext/apiCall'
+import { createEarningTax, getEarningTax } from '../../services/context/earningContext/apiCall'
 
 const Earnings:FC = () => {
 
@@ -24,12 +24,12 @@ const Earnings:FC = () => {
 
   const handleSubmit = (e:any) => {
       e.preventDefault()
-      // createEarningTax(earnings, dispatch)
+      createEarningTax(earnings, dispatch)
       window.location.reload()
   }
 
   useEffect(() => {
-    // getEarningTax(dispatch)
+    getEarningTax(dispatch)
 
     return () => {
       

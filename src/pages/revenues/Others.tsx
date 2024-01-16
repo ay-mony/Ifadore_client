@@ -24,7 +24,7 @@ const Others:FC = () => {
 
   const handleSubmit = (e:any) => {
     e.preventDefault()
-    // createOthersTax(Others, dispatch)
+    // createOthersTax(othersDetails, dispatch)
     window.location.reload()
   }
 
