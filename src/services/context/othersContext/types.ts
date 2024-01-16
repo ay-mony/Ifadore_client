@@ -17,4 +17,4 @@ export interface othersContextProps {
     loading: boolean;
     error: boolean;
     dispatch?: Dispatch<othersActionType> 
-  }
+}

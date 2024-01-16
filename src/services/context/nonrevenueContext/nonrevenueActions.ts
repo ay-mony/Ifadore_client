@@ -1,22 +1,26 @@
-export const getNonLicenceStart = () => ({
-    type: 'GET_NONLICENCE_START'
+export const getNonRevenueStart = () => ({
+    type: 'GET_NONREVENUE_START'
 })
 
-export const getNonLicenceSuccess = () => ({
-    type: 'GET_NONLICENCE_SUCCESS'
+export const getNonRevenueSuccess = (nonrevenue:any) => ({
+    type: 'GET_NONREVENUE_SUCCESS',
+    payload: nonrevenue
 })
 
-export const getNonLicenceFail = () => ({
-    type: 'GET_NONLICENCE_FAIL'
+export const getNonRevenueFail = (error: any) => ({
+    type: 'GET_NONREVENUE_FAIL',
+    payload: error
 })
 
 //create
-export const createNonLicenceStart = () => ({
-    type: 'CREATE_NONLICENCE_START'
+export const createNonRevenueStart = () => ({
+    type: 'CREATE_NONREVENUE_START'
 })
-export const createNonLicenceSuccess = () => ({
-    type: 'CREATE_NONLICENCE_SUCESS'
+export const createNonRevenueSuccess = (nonrevenue:any) => ({
+    type: 'CREATE_NONREVENUE_SUCCESS',
+    payload: nonrevenue
 })
-export const createNonLicenceFail = () => ({
-    type: 'CREATE_NONLICENCE_FAIL'
+export const createNonRevenueFail = (error: any) => ({
+    type: 'CREATE_NONREVENUE_FAIL',
+    payload: error
 })
