@@ -31,6 +31,10 @@ const Polltask:FC = () => {
 
     useEffect(() => {
       getPollTax(dispatch)
+
+      return () => {
+        
+      }
     }, [dispatch])
 
 

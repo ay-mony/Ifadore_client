@@ -29,26 +29,3 @@ export const getPollTax = async (dispatch:any) => {
 }
 
 
-export const createNonRevenue = async (nonrevenue:any, dispatch: any) => {
-    dispatch(createPollTaxStart())
-
-    try {
-        const res = await axios.post(baseUrl + 'nonrevenue', nonrevenue)
-        dispatch(createPollTaxSuccess(res.data))
-    } catch (error) {
-        dispatch(createPollTaxFail(error))
-        console.log(error)
-    }
-}
-
-
-export const getNonRevenue = async (dispatch: any) => {
-    dispatch(getPollTaxStart())
-    try {
-        const res = await axios.get(baseUrl + 'nonrevenue')
-
-        dispatch(getPollTaxSuccess(res.data))
-    } catch (error) {
-        dispatch(getPollTaxFail(error))
-    }
-}
