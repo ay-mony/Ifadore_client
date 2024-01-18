@@ -49,7 +49,7 @@ const Widget: FC<WidgetProps> = ({type})=> {
         }
       
       default:
-        throw new Error('Invalid widget type');
+        throw new Error();
       }
     }
   
