@@ -5,7 +5,7 @@ import Sidebar from './comps/sidebar/Sidebar';
 import Home from './pages/home/Home';
 import Login from './pages/login/Login';
 import { Polltask, Earnings,  Lincence, Fees, NonRevenue, Rent, Others } from './pages/revenues';
-import { useContext } from 'react';
+import { useContext, Suspense } from 'react';
 import { AuthContext } from './services/context/auth/authContext';
 
 
@@ -14,6 +14,7 @@ function App() {
   
 
   const { user } = useContext(AuthContext)
+
 
   const Layout = () => {
     return(
@@ -36,39 +37,71 @@ function App() {
 
       {
         path: '/',
-        element: user ? <Layout/> : <Login/>,
+        element:  user ? <Layout/> : <Login/>,
         children: [
           {
             path: '/',
-            element: <Home/> 
+            element: (
+              <Suspense fallback={<div>Please wait...</div>}>
+                <Home/>
+              </Suspense>
+            )
           },
           {
             path: '/polltax',
-            element: <Polltask/> 
+            element:(
+              <Suspense fallback={<div>Please wait...</div>}>
+                <Polltask/>
+              </Suspense>
+            )
           },
           {
             path: '/nonrevenue',
-            element: <NonRevenue/>
+            element: (
+              <Suspense fallback={<div>Please wait...</div>}>
+                <NonRevenue/>
+              </Suspense>
+            )
           },
           {
             path: '/licence',
-            element: <Lincence/>
+            element: (
+              <Suspense fallback={<div>Please wait...</div>}>
+                <Lincence/>
+              </Suspense>
+            )
           },
           {
             path: '/earnings',
-            element: <Earnings/>
+            element:( 
+              <Suspense fallback={<div>Please wait...</div>}>
+                <Earnings/>
+              </Suspense>
+            )
           },
           {
             path: '/rents',
-            element: <Rent/>
+            element: (
+              <Suspense fallback={<div>Please wait...</div>}>
+                <Rent/>
+              </Suspense>
+            )
           },
           {
             path: '/fees',
-            element: <Fees/>
+            element:( 
+              <Suspense fallback={<div>Please wait...</div>}>
+                <Fees/>
+              </Suspense>
+            )
           },
           {
             path: '/others',
-            element: <Others/>
+            element: (
+              <Suspense fallback={<div>Please wait...</div>}>
+                <Others/>
+              </Suspense>
+            )
           },
         ]
       },

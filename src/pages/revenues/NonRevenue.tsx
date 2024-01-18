@@ -23,9 +23,9 @@ const NonRevenue:FC = () => {
   }
 
   const handleSubmit = (e:any) => {
-    e.preeventDefault()
+    e.preventDefault()
     createNonRevenue(nonrevenue, dispatch)
-    window.location.reload()
+    window.location.replace('/nonrevenue')
   }
 
 

@@ -1,28 +1,17 @@
 import './widget.scss'
-import { FC, useEffect, useState } from 'react'
+import { FC } from 'react'
 import { WidgetProps, WidgetDetails } from '../../types/types'
 import { ChatBubble, ApprovalOutlined, BarChartOutlined, CheckCircleOutline, Repartition } from '@mui/icons-material'
-import { polltaxUrl } from '../../services/utils/url'
-import axios from 'axios'
+import { baseUrl } from '../../services/utils/url'
+import { useAmount } from '../../services/utils/hook';
 
 
 
 const Widget: FC<WidgetProps> = ({type})=> {
 
-  const [polltax, setPollTax] = useState(0)
-  useEffect(() => {
-    const getPollTax = async () => {
-
-      try {
-        const res = await axios.get(polltaxUrl)
-        setPollTax(res.data.totalAmount)
-      } catch (error) {
-        console.log(error)
-      }
-    }
-    getPollTax()
-  })
-
+  const totalPolltax = useAmount(baseUrl + 'polltax/amount')
+  const totalEarning =   useAmount(baseUrl + 'earning/amount')
+  const totalRents = useAmount(baseUrl + 'fees/amount')
  
   
   const getWidgetDetails = (): WidgetDetails => {
@@ -32,19 +21,19 @@ const Widget: FC<WidgetProps> = ({type})=> {
         return {
         title: 'Poll Tax',
         icon: <BarChartOutlined style={{color: 'orange'}}/>,
-        amount: polltax
+        amount: totalPolltax.amount
       };
       case 'rent':
         return {
-          title: 'Rents',
+          title: 'Fees',
           icon: <ApprovalOutlined style={{color: 'green'}}/>,
-          amount: 312000
+          amount: totalRents.amount
       };
       case 'earnings':
         return {
           title: 'Earnings',
           icon: <CheckCircleOutline style={{color: 'yellow'}}/>,
-          amount: 310000
+          amount: totalEarning.amount
         };
       case 'month':
         return {
